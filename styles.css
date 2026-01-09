@@ -1,0 +1,441 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
+header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 2rem 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    margin-bottom: 0.5rem;
+    font-size: 2.5rem;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* Main Content */
+main {
+    padding: 2rem 0;
+}
+
+section {
+    background: white;
+    margin-bottom: 2rem;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+h2 {
+    color: #667eea;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    border-bottom: 3px solid #667eea;
+    padding-bottom: 0.5rem;
+}
+
+h3 {
+    color: #764ba2;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+/* Introduction Section */
+.intro p {
+    font-size: 1.1rem;
+    color: #555;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #333;
+}
+
+input[type="text"],
+textarea,
+select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+textarea {
+    resize: vertical;
+}
+
+/* Buttons */
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+/* Results Section */
+.results {
+    border-left: 4px solid #667eea;
+}
+
+.risk-score {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin: 1rem 0;
+}
+
+.risk-level-low {
+    background-color: #4caf50;
+    color: white;
+}
+
+.risk-level-medium {
+    background-color: #ff9800;
+    color: white;
+}
+
+.risk-level-high {
+    background-color: #f44336;
+    color: white;
+}
+
+.risk-level-critical {
+    background-color: #9c27b0;
+    color: white;
+}
+
+.result-details {
+    background: #f9f9f9;
+    padding: 1.5rem;
+    border-radius: 4px;
+    margin-top: 1rem;
+}
+
+.result-details p {
+    margin-bottom: 0.5rem;
+}
+
+.result-details strong {
+    color: #667eea;
+}
+
+/* Risk Matrix */
+.matrix-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem 0;
+}
+
+.matrix-y-label {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #667eea;
+    margin-right: 1rem;
+}
+
+.matrix-x-label {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #667eea;
+    text-align: center;
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.matrix {
+    border-collapse: collapse;
+    margin: 0 auto;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.matrix th,
+.matrix td {
+    border: 2px solid #ddd;
+    padding: 1rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+.matrix th {
+    background-color: #667eea;
+    color: white;
+    font-size: 0.9rem;
+}
+
+.matrix .row-label {
+    background-color: #667eea;
+    color: white;
+    font-size: 0.9rem;
+}
+
+.matrix .cell {
+    width: 80px;
+    height: 80px;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.matrix .cell:hover {
+    transform: scale(1.05);
+    z-index: 10;
+}
+
+.matrix .cell.low {
+    background-color: #4caf50;
+}
+
+.matrix .cell.medium {
+    background-color: #ff9800;
+}
+
+.matrix .cell.high {
+    background-color: #f44336;
+}
+
+.matrix .cell.critical {
+    background-color: #9c27b0;
+}
+
+.matrix .cell::after {
+    content: attr(data-score);
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.matrix .cell.active {
+    border: 4px solid #333;
+    box-shadow: 0 0 0 3px #fff, 0 0 0 6px #333;
+}
+
+/* Legend */
+.legend {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: #f9f9f9;
+    border-radius: 4px;
+}
+
+.legend-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.legend-color {
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    border: 2px solid #ddd;
+}
+
+.legend-color.low {
+    background-color: #4caf50;
+}
+
+.legend-color.medium {
+    background-color: #ff9800;
+}
+
+.legend-color.high {
+    background-color: #f44336;
+}
+
+.legend-color.critical {
+    background-color: #9c27b0;
+}
+
+/* Risk List */
+.risk-list {
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.no-risks {
+    text-align: center;
+    color: #999;
+    font-style: italic;
+    padding: 2rem;
+}
+
+.risk-item {
+    background: #f9f9f9;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    border-left: 4px solid #667eea;
+    transition: box-shadow 0.3s;
+}
+
+.risk-item:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.risk-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.risk-item-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #333;
+}
+
+.risk-item-badge {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.risk-item-content p {
+    margin-bottom: 0.5rem;
+    color: #555;
+}
+
+.risk-item-content strong {
+    color: #333;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .matrix .cell {
+        width: 50px;
+        height: 50px;
+        padding: 0.5rem;
+    }
+
+    .matrix th,
+    .matrix td {
+        padding: 0.5rem;
+        font-size: 0.8rem;
+    }
+
+    .legend-items {
+        grid-template-columns: 1fr;
+    }
+
+    .risk-item-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    section {
+        padding: 1rem;
+    }
+
+    h2 {
+        font-size: 1.4rem;
+    }
+
+    .matrix .cell {
+        width: 40px;
+        height: 40px;
+    }
+
+    .matrix .cell::after {
+        font-size: 0.9rem;
+    }
+}

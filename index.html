@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Risk Assessment Model - Demo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>IT Risk Assessment Model</h1>
+            <p class="subtitle">Comprehensive Risk Evaluation Tool</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="intro">
+            <h2>Welcome to the IT Risk Assessment Tool</h2>
+            <p>This tool helps organizations identify, assess, and prioritize IT risks based on likelihood and impact criteria. Use the form below to evaluate potential risks in your IT infrastructure.</p>
+        </section>
+
+        <section class="risk-form">
+            <h2>Risk Assessment Form</h2>
+            <form id="riskForm">
+                <div class="form-group">
+                    <label for="riskName">Risk Name:</label>
+                    <input type="text" id="riskName" name="riskName" required placeholder="e.g., Data Breach, System Downtime">
+                </div>
+
+                <div class="form-group">
+                    <label for="riskDescription">Risk Description:</label>
+                    <textarea id="riskDescription" name="riskDescription" rows="3" required placeholder="Describe the potential risk..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="category">Risk Category:</label>
+                    <select id="category" name="category" required>
+                        <option value="">Select a category</option>
+                        <option value="security">Security</option>
+                        <option value="operational">Operational</option>
+                        <option value="compliance">Compliance</option>
+                        <option value="financial">Financial</option>
+                        <option value="strategic">Strategic</option>
+                        <option value="reputational">Reputational</option>
+                    </select>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="likelihood">Likelihood (1-5):</label>
+                        <select id="likelihood" name="likelihood" required>
+                            <option value="">Select</option>
+                            <option value="1">1 - Very Low (Rare)</option>
+                            <option value="2">2 - Low (Unlikely)</option>
+                            <option value="3">3 - Medium (Possible)</option>
+                            <option value="4">4 - High (Likely)</option>
+                            <option value="5">5 - Very High (Almost Certain)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="impact">Impact (1-5):</label>
+                        <select id="impact" name="impact" required>
+                            <option value="">Select</option>
+                            <option value="1">1 - Very Low (Negligible)</option>
+                            <option value="2">2 - Low (Minor)</option>
+                            <option value="3">3 - Medium (Moderate)</option>
+                            <option value="4">4 - High (Major)</option>
+                            <option value="5">5 - Very High (Catastrophic)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="mitigation">Mitigation Strategy:</label>
+                    <textarea id="mitigation" name="mitigation" rows="3" placeholder="Describe mitigation measures..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-primary">Assess Risk</button>
+            </form>
+        </section>
+
+        <section class="results" id="resultsSection" style="display: none;">
+            <h2>Risk Assessment Results</h2>
+            <div id="riskResults"></div>
+        </section>
+
+        <section class="risk-matrix">
+            <h2>Risk Matrix</h2>
+            <div class="matrix-container">
+                <div class="matrix-y-label">Impact</div>
+                <table class="matrix" id="riskMatrix">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>1<br>Very Low</th>
+                            <th>2<br>Low</th>
+                            <th>3<br>Medium</th>
+                            <th>4<br>High</th>
+                            <th>5<br>Very High</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="row-label">5<br>Very High</td>
+                            <td class="cell medium" data-score="5"></td>
+                            <td class="cell high" data-score="10"></td>
+                            <td class="cell high" data-score="15"></td>
+                            <td class="cell critical" data-score="20"></td>
+                            <td class="cell critical" data-score="25"></td>
+                        </tr>
+                        <tr>
+                            <td class="row-label">4<br>High</td>
+                            <td class="cell low" data-score="4"></td>
+                            <td class="cell medium" data-score="8"></td>
+                            <td class="cell high" data-score="12"></td>
+                            <td class="cell high" data-score="16"></td>
+                            <td class="cell critical" data-score="20"></td>
+                        </tr>
+                        <tr>
+                            <td class="row-label">3<br>Medium</td>
+                            <td class="cell low" data-score="3"></td>
+                            <td class="cell low" data-score="6"></td>
+                            <td class="cell medium" data-score="9"></td>
+                            <td class="cell high" data-score="12"></td>
+                            <td class="cell high" data-score="15"></td>
+                        </tr>
+                        <tr>
+                            <td class="row-label">2<br>Low</td>
+                            <td class="cell low" data-score="2"></td>
+                            <td class="cell low" data-score="4"></td>
+                            <td class="cell low" data-score="6"></td>
+                            <td class="cell medium" data-score="8"></td>
+                            <td class="cell high" data-score="10"></td>
+                        </tr>
+                        <tr>
+                            <td class="row-label">1<br>Very Low</td>
+                            <td class="cell low" data-score="1"></td>
+                            <td class="cell low" data-score="2"></td>
+                            <td class="cell low" data-score="3"></td>
+                            <td class="cell low" data-score="4"></td>
+                            <td class="cell medium" data-score="5"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="matrix-x-label">Likelihood</div>
+            </div>
+            <div class="legend">
+                <h3>Risk Level Legend</h3>
+                <div class="legend-items">
+                    <div class="legend-item">
+                        <span class="legend-color low"></span>
+                        <span>Low Risk (1-6): Accept & Monitor</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color medium"></span>
+                        <span>Medium Risk (7-12): Mitigate</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color high"></span>
+                        <span>High Risk (13-19): Urgent Action Required</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color critical"></span>
+                        <span>Critical Risk (20-25): Immediate Action Required</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="risk-list">
+            <h2>Assessed Risks</h2>
+            <div id="riskList">
+                <p class="no-risks">No risks assessed yet. Use the form above to assess your first risk.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 IT Risk Assessment Model. Demo Version 1.0</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
